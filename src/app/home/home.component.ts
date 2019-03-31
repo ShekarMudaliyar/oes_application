@@ -1,7 +1,6 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, ViewChild, ElementRef } from "@angular/core";
 import { LocalStorage } from "@ngx-pwa/local-storage";
 import { DataService } from "../service/data.service";
-
 @Component({
   selector: "app-home",
   templateUrl: "./home.component.html",
@@ -17,6 +16,7 @@ export class HomeComponent implements OnInit {
   currsection;
   userdata;
   toggleques = "";
+  execode;
   constructor(private local: LocalStorage, private data: DataService) {
     this.local.getItem("user").subscribe(data => {
       console.log(data);
@@ -75,5 +75,19 @@ export class HomeComponent implements OnInit {
   briefsubmit(event, i) {
     event.preventDefault();
     console.log(event, i, event.target.querySelector("#answer").value);
+  }
+  codeRun(event, i) {
+    event.preventDefault();
+    const first = event.target.querySelector(".first");
+    const iframe = event.target.querySelector("iframe");
+    var html = first.textContent;
+    this.execode = first.textContent;
+    // iframe.src = "data:text/html;charset=utf-8," + encodeURI(html);
+    // var text = event.target.clipboardData.getData("text/plain");
+    // document.execCommand("insertText", false, text);
+    console.log(i, html);
+  }
+  submitCode() {
+    console.log(this.execode);
   }
 }

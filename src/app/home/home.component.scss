@@ -106,5 +106,46 @@
 }
 
 .code {
-  background: yellow;
+  margin-left: 5px;
+  margin-right: 5px;
+  margin-top: 10px;
+  p {
+    text-align: start;
+    margin-bottom: 5px;
+    font-size: 2em;
+  }
+  .btn {
+    padding: 10px;
+    margin-left: 5px;
+    margin: 5px;
+  }
+  .buttons-code {
+    float: right;
+  }
+  .main-editor {
+    height: 80vh;
+    width: 100%;
+    border: 1px;
+    border-style: solid;
+  }
+
+  .first {
+    background-color: #ffffff;
+    width: 50%;
+    float: left;
+    height: 100%;
+  }
+
+  .second {
+    background-color: rgb(255, 255, 255);
+    border: 1px;
+    border-style: solid;
+    width: 50%;
+    float: right;
+    height: 100%;
+  }
+  iframe {
+    height: 90vh;
+    width: 100%;
+  }
 }

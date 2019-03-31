@@ -130,6 +130,27 @@
         </form>
       </div>
     </ng-template>
+    <ng-template #code>
+      <p>{{ question.question }}</p>
+      <iframe src="http://localhost:3000/codeeditor" frameborder="1"></iframe>
+      <!-- <form (submit)="codeRun($event, question)">
+        <div class="main-editor">
+          <div class="first" contenteditable>
+            write code Here
+          </div>
+          <div class="second" [innerHtml]="execode"></div>
+          <div class="buttons-code">
+            <button class="btn-run btn btn-success" type="submit">Run</button>
+            <button
+              class="btn-submit btn btn-primary"
+              (click)="submitCode($event)"
+            >
+              Submit
+            </button>
+          </div>
+        </div>
+      </form> -->
+    </ng-template>
     <div class="main">
       <span [ngSwitch]="toggleques">
         <div *ngSwitchCase="'fib'">
@@ -141,7 +162,9 @@
         <div *ngSwitchCase="'brief'" class="brief">
           <div *ngIf="question != ''; then brief; else blank"></div>
         </div>
-        <div *ngSwitchCase="'code'" class="code">{{ question.question }}</div>
+        <div *ngSwitchCase="'code'" class="code">
+          <div *ngIf="question != ''; then code; else blank"></div>
+        </div>
         <div *ngSwitchDefault></div>
       </span>
     </div>
