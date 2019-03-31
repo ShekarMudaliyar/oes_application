@@ -17,4 +17,13 @@ export class DataService {
       { responseType: "text" }
     );
   }
+  getQues(examid) {
+    return this.http.post(
+      "http://localhost:3000/getquesstud",
+      {
+        examid: examid
+      },
+      { responseType: "text" }
+    );
+  }
 }

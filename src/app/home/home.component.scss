@@ -18,10 +18,12 @@
   height: 30%;
   width: 100%;
   background-color: lightgray;
+  text-align: center;
 }
 .right-bottom {
   height: 70%;
   width: 100%;
+  overflow-y: scroll;
   /* background-color: lightgray; */
 }
 .right {
@@ -31,4 +33,30 @@
   height: 100%;
   width: 20%;
   /* background-color: green */
+}
+.buttons {
+  width: 100%;
+  text-align: start;
+  background: #383838;
+}
+.btn2 {
+  margin-right: 10px;
+  margin-left: 10px;
+  padding-right: 10px;
+  padding-left: 10px;
+  padding-top: 2px;
+  padding-bottom: 2px;
+}
+.questionitem {
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-top: 2px;
+  margin-bottom: 2px;
+}
+.about {
+  text-align: start;
+  margin-left: 5px;
+}
+.main {
+  margin: 5px;
 }

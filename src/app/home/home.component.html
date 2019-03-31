@@ -1,14 +1,77 @@
 <div class="content">
-  <div class="left"></div>
+  <div class="left">
+    <div class="buttons">
+      <button
+        type="button"
+        class="btn btn-primary btn-lg btn2 btn-dark"
+        (click)="load('fib')"
+      >
+        FIB
+      </button>
+      <button
+        type="button"
+        class="btn btn-primary btn-lg btn2 btn-dark"
+        (click)="load('mcq')"
+      >
+        MCQ
+      </button>
+      <button
+        type="button"
+        class="btn btn-primary btn-lg btn2 btn-dark"
+        (click)="load('brief')"
+      >
+        Brief
+      </button>
+      <button
+        type="button"
+        class="btn btn-primary btn-lg btn2 btn-dark"
+        (click)="load('code')"
+      >
+        Code
+      </button>
+    </div>
+    <hr />
+
+    <div class="main">
+      {{ question }}
+      <span [ngSwitch]="toggleques">
+        <div *ngSwitchCase="'fib'">{{ question }}</div>
+        <div *ngSwitchCase="'mcq'">{{ question }}</div>
+        <div *ngSwitchCase="'brief'">{{ question }}</div>
+        <div *ngSwitchCase="'code'">{{ question }}</div>
+        <div *ngSwitchDefault></div>
+      </span>
+    </div>
+  </div>
   <div class="right">
     <div class="right-top">
-      <h1>About</h1>
+      <h3>About</h3>
+      <div class="about">
+        Name: {{ userdata.name }}
+        <br />
+        Roll no: {{ userdata.rollno }}
+        <br />
+        Email: {{ userdata.email }}
+      </div>
     </div>
     <div class="right-bottom">
       <div>
-        <h2>
-          Question status
-        </h2>
+        <label>Questions</label>
+        <div class="list-group" *ngFor="let q of currsection; let i = index">
+          <div class="questionitem">
+            <span
+              class="list-group-item list-group-item-action"
+              (click)="quesClick(q)"
+            >
+              <button
+                type="button"
+                class="btn btn-primary btn-lg btn-dark btn-block"
+              >
+                {{ i + 1 }}
+              </button>
+            </span>
+          </div>
+        </div>
       </div>
     </div>
   </div>
