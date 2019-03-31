@@ -63,4 +63,17 @@ export class HomeComponent implements OnInit {
     event.preventDefault();
     console.log(event, i, event.target.querySelector("#ans").value);
   }
+  mcqsubmit(event, i) {
+    event.preventDefault();
+    console.log(
+      event,
+      i,
+      event.target.querySelector('input[name="inlineRadioOptions"]:checked')
+        .value
+    );
+  }
+  briefsubmit(event, i) {
+    event.preventDefault();
+    console.log(event, i, event.target.querySelector("#answer").value);
+  }
 }
