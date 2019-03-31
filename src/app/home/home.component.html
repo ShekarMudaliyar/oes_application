@@ -31,14 +31,40 @@
       </button>
     </div>
     <hr />
+    <ng-template #blank></ng-template>
+
+    <ng-template #fib>
+      <div class="fib">
+        <form (submit)="fibsubmit($event, question)">
+          <p>{{ question.question }}</p>
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="basic-addon1">Answer</span>
+            </div>
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Username"
+              aria-label="Username"
+              aria-describedby="basic-addon1"
+              id="ans"
+            />
+          </div>
+          <span style="position: absolute;right:0;bottom:0;margin:10px;"
+            ><button type="submit" class="btn btn-primary">Submit</button></span
+          >
+        </form>
+      </div>
+    </ng-template>
 
     <div class="main">
-      {{ question }}
       <span [ngSwitch]="toggleques">
-        <div *ngSwitchCase="'fib'">{{ question }}</div>
-        <div *ngSwitchCase="'mcq'">{{ question }}</div>
-        <div *ngSwitchCase="'brief'">{{ question }}</div>
-        <div *ngSwitchCase="'code'">{{ question }}</div>
+        <div *ngSwitchCase="'fib'">
+          <div *ngIf="question != ''; then fib; else blank"></div>
+        </div>
+        <div *ngSwitchCase="'mcq'" class="mcq">{{ question }}</div>
+        <div *ngSwitchCase="'brief'" class="brief">{{ question }}</div>
+        <div *ngSwitchCase="'code'" class="code">{{ question }}</div>
         <div *ngSwitchDefault></div>
       </span>
     </div>

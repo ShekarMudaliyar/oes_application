@@ -36,9 +36,10 @@ export class HomeComponent implements OnInit {
   ngOnInit() {}
   quesClick(i) {
     console.log(i);
-    this.question = i.question;
+    this.question = i;
   }
   load(i) {
+    this.question = "";
     switch (i) {
       case "fib":
         this.currsection = this.fib;
@@ -57,5 +58,9 @@ export class HomeComponent implements OnInit {
         this.toggleques = "code";
         break;
     }
+  }
+  fibsubmit(event, i) {
+    event.preventDefault();
+    console.log(event, i, event.target.querySelector("#ans").value);
   }
 }

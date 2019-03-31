@@ -60,3 +60,28 @@
 .main {
   margin: 5px;
 }
+.fib {
+  margin-left: 5px;
+  margin-right: 5px;
+  margin-top: 20px;
+  p {
+    text-align: start;
+    margin-bottom: 20px;
+    font-size: 2em;
+  }
+  .btn {
+    padding: 10px;
+  }
+}
+
+.mcq {
+  background: red;
+}
+
+.brief {
+  background: green;
+}
+
+.code {
+  background: yellow;
+}
