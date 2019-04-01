@@ -6,9 +6,11 @@ import { HttpClient } from "@angular/common/http";
 })
 export class DataService {
   constructor(private http: HttpClient) {}
+  // url = "http://localhost:3000/";
+  url = "https://oes-backend.herokuapp.com/";
   authStud(examid: string, email: string, pass: string) {
     return this.http.post(
-      "http://localhost:3000/authstud",
+      `${this.url}authstud`,
       {
         examid: examid,
         email: email,
@@ -19,9 +21,61 @@ export class DataService {
   }
   getQues(examid) {
     return this.http.post(
-      "http://localhost:3000/getquesstud",
+      `${this.url}getquesstud`,
       {
         examid: examid
+      },
+      { responseType: "text" }
+    );
+  }
+  createAns(examid, studid) {
+    return this.http.post(
+      `${this.url}createexamans`,
+      {
+        examid: examid,
+        studid: studid
+      },
+      { responseType: "text" }
+    );
+  }
+  submitfib(quesid, examid, studid, ques, ans, gans) {
+    return this.http.post(
+      `${this.url}submitfib`,
+      {
+        quesid: quesid,
+        studid: studid,
+        examid: examid,
+        ques: ques,
+        ans: ans,
+        gans: gans
+      },
+      { responseType: "text" }
+    );
+  }
+  submitmcq(quesid, examid, studid, ques, ans, gans) {
+    return this.http.post(
+      `${this.url}submitmcq`,
+      {
+        quesid: quesid,
+        studid: studid,
+        examid: examid,
+        ques: ques,
+        ans: ans,
+        gans: gans
+      },
+      { responseType: "text" }
+    );
+  }
+  submitbrief(quesid, examid, studid, ques, ans, gans) {
+    return this.http.post(
+      `${this.url}submitbrief`,
+      {
+        quesid: quesid,
+        studid: studid,
+        examid: examid,
+        ques: ques,
+        ans: ans,
+        gans: gans
       },
       { responseType: "text" }
     );

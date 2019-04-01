@@ -17,6 +17,8 @@ export class HomeComponent implements OnInit {
   userdata;
   toggleques = "";
   execode;
+  examid;
+  studid;
   constructor(private local: LocalStorage, private data: DataService) {
     this.local.getItem("user").subscribe(data => {
       console.log(data);
@@ -30,6 +32,11 @@ export class HomeComponent implements OnInit {
         this.brief = temp.brief;
         this.code = temp.code;
       });
+      this.data.createAns(data.examid, data._id).subscribe(data => {
+        console.log(data);
+      });
+      this.examid = data.examid;
+      this.studid = data._id;
     });
   }
 
@@ -61,20 +68,40 @@ export class HomeComponent implements OnInit {
   }
   fibsubmit(event, i) {
     event.preventDefault();
-    console.log(event, i, event.target.querySelector("#ans").value);
+    let gans = event.target.querySelector("#ans").value;
+    console.log(i, event.target.querySelector("#ans").value);
+    this.data
+      .submitfib(i.id, this.examid, this.studid, i.question, i.answer, gans)
+      .subscribe(data => {
+        console.log(data);
+      });
   }
   mcqsubmit(event, i) {
     event.preventDefault();
+    let gans = event.target.querySelector(
+      'input[name="inlineRadioOptions"]:checked'
+    ).value;
     console.log(
       event,
       i,
       event.target.querySelector('input[name="inlineRadioOptions"]:checked')
         .value
     );
+    this.data
+      .submitmcq(i.id, this.examid, this.studid, i.question, i.answer, gans)
+      .subscribe(data => {
+        console.log(data);
+      });
   }
   briefsubmit(event, i) {
     event.preventDefault();
+    let gans = event.target.querySelector("#answer").value;
     console.log(event, i, event.target.querySelector("#answer").value);
+    this.data
+      .submitbrief(i.id, this.examid, this.studid, i.question, i.answer, gans)
+      .subscribe(data => {
+        console.log(data);
+      });
   }
   codeRun(event, i) {
     event.preventDefault();
