@@ -32,11 +32,11 @@ export class HomeComponent implements OnInit {
         this.brief = temp.brief;
         this.code = temp.code;
       });
-      this.data.createAns(data.examid, data._id).subscribe(data => {
+      this.data.createAns(data.examid, data.id).subscribe(data => {
         console.log(data);
       });
       this.examid = data.examid;
-      this.studid = data._id;
+      this.studid = data.id;
     });
   }
 
