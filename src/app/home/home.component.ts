@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild, ElementRef } from "@angular/core";
 import { LocalStorage } from "@ngx-pwa/local-storage";
 import { DataService } from "../service/data.service";
+
 @Component({
   selector: "app-home",
   templateUrl: "./home.component.html",
@@ -19,6 +20,7 @@ export class HomeComponent implements OnInit {
   execode;
   examid;
   studid;
+  iframeurl = "";
   constructor(private local: LocalStorage, private data: DataService) {
     this.local.getItem("user").subscribe(data => {
       console.log(data);
@@ -44,6 +46,9 @@ export class HomeComponent implements OnInit {
   quesClick(i) {
     console.log(i);
     this.question = i;
+    this.iframeurl = `https://oes-backend.herokuapp.com/codeeditor?studid=${
+      this.studid
+    }&examid=${this.examid}&qid=${i.id}&ques=${i.question}`;
   }
   load(i) {
     this.question = "";

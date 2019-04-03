@@ -132,10 +132,7 @@
     </ng-template>
     <ng-template #code>
       <p>{{ question.question }}</p>
-      <iframe
-        src="https://oes-backend.herokuapp.com/codeeditor"
-        frameborder="1"
-      ></iframe>
+      <iframe [src]="iframeurl | safe" frameborder="1"></iframe>
       <!-- <form (submit)="codeRun($event, question)">
         <div class="main-editor">
           <div class="first" contenteditable>
