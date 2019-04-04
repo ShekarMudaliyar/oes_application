@@ -48,7 +48,7 @@ export class HomeComponent implements OnInit {
     this.question = i;
     this.iframeurl = `https://oes-backend.herokuapp.com/codeeditor?studid=${
       this.studid
-    }&examid=${this.examid}&qid=${i.id}&ques=${i.question}`;
+    }&examid=${this.examid}&qid=${i.id}&ques=${i.question}&marks=${i.marks}`;
   }
   load(i) {
     this.question = "";
@@ -76,7 +76,15 @@ export class HomeComponent implements OnInit {
     let gans = event.target.querySelector("#ans").value;
     console.log(i, event.target.querySelector("#ans").value);
     this.data
-      .submitfib(i.id, this.examid, this.studid, i.question, i.answer, gans)
+      .submitfib(
+        i.id,
+        this.examid,
+        this.studid,
+        i.question,
+        i.answer,
+        gans,
+        i.marks
+      )
       .subscribe(data => {
         console.log(data);
       });
@@ -93,7 +101,15 @@ export class HomeComponent implements OnInit {
         .value
     );
     this.data
-      .submitmcq(i.id, this.examid, this.studid, i.question, i.answer, gans)
+      .submitmcq(
+        i.id,
+        this.examid,
+        this.studid,
+        i.question,
+        i.answer,
+        gans,
+        i.marks
+      )
       .subscribe(data => {
         console.log(data);
       });
@@ -103,7 +119,15 @@ export class HomeComponent implements OnInit {
     let gans = event.target.querySelector("#answer").value;
     console.log(event, i, event.target.querySelector("#answer").value);
     this.data
-      .submitbrief(i.id, this.examid, this.studid, i.question, i.answer, gans)
+      .submitbrief(
+        i.id,
+        this.examid,
+        this.studid,
+        i.question,
+        i.answer,
+        gans,
+        i.marks
+      )
       .subscribe(data => {
         console.log(data);
       });

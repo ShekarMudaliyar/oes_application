@@ -38,7 +38,7 @@ export class DataService {
       { responseType: "text" }
     );
   }
-  submitfib(quesid, examid, studid, ques, ans, gans) {
+  submitfib(quesid, examid, studid, ques, ans, gans, marks) {
     return this.http.post(
       `${this.url}submitfib`,
       {
@@ -47,12 +47,13 @@ export class DataService {
         examid: examid,
         ques: ques,
         ans: ans,
-        gans: gans
+        gans: gans,
+        marks: marks
       },
       { responseType: "text" }
     );
   }
-  submitmcq(quesid, examid, studid, ques, ans, gans) {
+  submitmcq(quesid, examid, studid, ques, ans, gans, marks) {
     return this.http.post(
       `${this.url}submitmcq`,
       {
@@ -61,12 +62,13 @@ export class DataService {
         examid: examid,
         ques: ques,
         ans: ans,
-        gans: gans
+        gans: gans,
+        marks: marks
       },
       { responseType: "text" }
     );
   }
-  submitbrief(quesid, examid, studid, ques, ans, gans) {
+  submitbrief(quesid, examid, studid, ques, ans, gans, marks) {
     return this.http.post(
       `${this.url}submitbrief`,
       {
@@ -75,7 +77,8 @@ export class DataService {
         examid: examid,
         ques: ques,
         ans: ans,
-        gans: gans
+        gans: gans,
+        marks: marks
       },
       { responseType: "text" }
     );
