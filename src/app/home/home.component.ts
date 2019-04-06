@@ -21,6 +21,8 @@ export class HomeComponent implements OnInit {
   examid;
   studid;
   iframeurl = "";
+  // url = "https://oes-backend.herokuapp.com";
+  url = "http://localhost:3000";
   constructor(private local: LocalStorage, private data: DataService) {
     this.local.getItem("user").subscribe(data => {
       console.log(data);
@@ -46,9 +48,9 @@ export class HomeComponent implements OnInit {
   quesClick(i) {
     console.log(i);
     this.question = i;
-    this.iframeurl = `https://oes-backend.herokuapp.com/codeeditor?studid=${
-      this.studid
-    }&examid=${this.examid}&qid=${i.id}&ques=${i.question}&marks=${i.marks}`;
+    this.iframeurl = `${this.url}/codeeditor?studid=${this.studid}&examid=${
+      this.examid
+    }&qid=${i.id}&ques=${i.question}&marks=${i.marks}`;
   }
   load(i) {
     this.question = "";
