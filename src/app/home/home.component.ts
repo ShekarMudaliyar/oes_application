@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild, ElementRef } from "@angular/core";
 import { LocalStorage } from "@ngx-pwa/local-storage";
 import { DataService } from "../service/data.service";
+import { WebsocketService } from "../socketservice/websocket.service";
 
 @Component({
   selector: "app-home",
@@ -23,12 +24,16 @@ export class HomeComponent implements OnInit {
   iframeurl = "";
   // url = "https://oes-backend.herokuapp.com";
   url = "http://localhost:3000";
-  constructor(private local: LocalStorage, private data: DataService) {
+  constructor(
+    private local: LocalStorage,
+    private data: DataService,
+    private websoc: WebsocketService
+  ) {
     this.local.getItem("user").subscribe(data => {
       console.log(data);
       this.userdata = data;
       this.data.getQues(data.examid).subscribe(ques => {
-        console.log(ques);
+        // console.log(ques);
         let temp = JSON.parse(ques);
         this.ques = temp;
         this.fib = temp.fib;
@@ -37,10 +42,17 @@ export class HomeComponent implements OnInit {
         this.code = temp.code;
       });
       this.data.createAns(data.examid, data.id).subscribe(data => {
-        console.log(data);
+        // console.log(data);
       });
       this.examid = data.examid;
       this.studid = data.id;
+      this.websoc.emit("getdates", {
+        // userid: this.userdata.id,
+        examid: this.examid
+      });
+      this.websoc.listen("date").subscribe(data => {
+        console.log("socket data", data);
+      });
     });
   }
 

@@ -6,8 +6,8 @@ import { HttpClient } from "@angular/common/http";
 })
 export class DataService {
   constructor(private http: HttpClient) {}
-  // url = "http://localhost:3000/";
-  url = "https://oes-backend.herokuapp.com/";
+  url = "http://localhost:3000/";
+  // url = "https://oes-backend.herokuapp.com/";
   authStud(examid: string, email: string, pass: string) {
     return this.http.post(
       `${this.url}authstud`,
