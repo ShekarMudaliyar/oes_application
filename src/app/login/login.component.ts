@@ -28,7 +28,7 @@ export class LoginComponent implements OnInit {
         console.log(data.data);
         this.local
           .setItem("user", data.data)
-          .subscribe(() => this.router.navigate(["home"]));
+          .subscribe(() => this.router.navigate(["timer"]));
       } else if (data == "failure") {
         console.log("incorrect password");
       } else if (data == "total failure") {

@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild, ElementRef } from "@angular/core";
 import { LocalStorage } from "@ngx-pwa/local-storage";
 import { DataService } from "../service/data.service";
 import { WebsocketService } from "../socketservice/websocket.service";
+import { Router } from "@angular/router";
 
 @Component({
   selector: "app-home",
@@ -22,11 +23,15 @@ export class HomeComponent implements OnInit {
   examid;
   studid;
   iframeurl = "";
+  hour;
+  min;
+  sec;
   // url = "https://oes-backend.herokuapp.com";
   url = "http://localhost:3000";
   constructor(
     private local: LocalStorage,
     private data: DataService,
+    private router: Router,
     private websoc: WebsocketService
   ) {
     this.local.getItem("user").subscribe(data => {
@@ -50,8 +55,15 @@ export class HomeComponent implements OnInit {
         // userid: this.userdata.id,
         examid: this.examid
       });
-      this.websoc.listen("date").subscribe(data => {
+      this.websoc.listen("time").subscribe(data => {
         console.log("socket data", data);
+        if (data == "end") {
+          this.router.navigate(["endpage"]);
+        } else {
+          this.hour = data[0];
+          this.min = data[1];
+          this.sec = data[2];
+        }
       });
     });
   }
@@ -101,6 +113,10 @@ export class HomeComponent implements OnInit {
       )
       .subscribe(data => {
         console.log(data);
+        let da = JSON.parse(data);
+        if ((da.n = 1)) {
+          event.target.querySelector("#ans").value = "";
+        }
       });
   }
   mcqsubmit(event, i) {
@@ -144,6 +160,10 @@ export class HomeComponent implements OnInit {
       )
       .subscribe(data => {
         console.log(data);
+        let da = JSON.parse(data);
+        if ((da.n = 1)) {
+          event.target.querySelector("#answer").value = "";
+        }
       });
   }
   codeRun(event, i) {
