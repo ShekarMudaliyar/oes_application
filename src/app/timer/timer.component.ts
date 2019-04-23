@@ -28,7 +28,7 @@ export class TimerComponent implements OnInit {
         examid: this.examid
       });
       this.websoc.listen("date").subscribe(data => {
-        console.log("socket data", data);
+        // console.log("socket data", data);
         if (data == "start") {
           this.router.navigate(["home"]);
         } else {
