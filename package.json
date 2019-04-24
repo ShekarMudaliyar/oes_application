@@ -9,8 +9,8 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "electron": "electron .",
-    "electron-build": "ng build --prod && electron ."
+    "elec": "electron .",
+    "electron": "ng build --prod && electron ."
   },
   "private": true,
   "dependencies": {
